@@ -1,38 +1,73 @@
-# node-js-sample
+# .NET Core Buildpack with Heroku Support 
+## (Heroku Button with ASP.NET Core MVC Sample)
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+This uses the .Net Core Buildpack provided by Softtends<br>
 
-## Running Locally
+We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+You've created a new ASP.NET Core MVC project. [Learn what's new](https://go.microsoft.com/fwlink/?LinkId=518016)
 
-```sh
-git clone git@github.com:heroku/node-js-sample.git # or clone your own fork
-cd node-js-sample
-npm install
-npm start
-```
+You need to make the following changes in your Program.cs and project.json to deploy on Heroku
+<br/>
+In **Program.cs**
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+*   Add UseUrls method and pass args[0] as parameter to start your app. Because Heroku web dyno will start with dynamic port after sucessful deployment. We need to use the same port in code behind also then only your app will start and listen on that port else dotnet runtime will set default port 5000. Thereby we pass port number as parameter with url in Procfile
+<br/>
+public static void Main(string[] args
+{<br/>
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                **.UseUrls(args[0])**
+                .Build();
 
-## Deploying to Heroku
+            host.Run();
+}<br/>
+In **project.json**
 
-```
-heroku create
-git push heroku master
-heroku open
-```
+*   Add a new property called "outputName": "Your_ProjectName" in buildOptions  
+*   Remove scripts section. It has prepublish and postpublish actions which are not needed
+<br/>
+<br/>
+You can deploy this ASP.Net MVC website on Heroku server by clicking below button
+<br/>
+<br/>
+<a href="https://heroku.com/deploy?template=https://github.com/heroku-softtrends/dotnetmvc.sample/tree/master">
+  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
 
-Alternatively, you can deploy your own copy of the app using the web-based flow:
+## This application consists of:
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+*   Sample pages using ASP.NET Core MVC
+*   [Gulp](https://go.microsoft.com/fwlink/?LinkId=518007) and [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
+*   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
 
-## Documentation
+## How to
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+*   [Add a Controller and View](https://go.microsoft.com/fwlink/?LinkID=398600)
+*   [Add an appsetting in config and access it in app.](https://go.microsoft.com/fwlink/?LinkID=699562)
+*   [Manage User Secrets using Secret Manager.](https://go.microsoft.com/fwlink/?LinkId=699315)
+*   [Use logging to log a message.](https://go.microsoft.com/fwlink/?LinkId=699316)
+*   [Add packages using NuGet.](https://go.microsoft.com/fwlink/?LinkId=699317)
+*   [Add client packages using Bower.](https://go.microsoft.com/fwlink/?LinkId=699318)
+*   [Target development, staging or production environment.](https://go.microsoft.com/fwlink/?LinkId=699319)
 
-- [10 Habits of a Happy Node Hacker](https://blog.heroku.com/archives/2014/3/11/node-habits)
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+## Overview
+
+*   [Conceptual overview of what is ASP.NET Core](https://go.microsoft.com/fwlink/?LinkId=518008)
+*   [Fundamentals of ASP.NET Core such as Startup and middleware.](https://go.microsoft.com/fwlink/?LinkId=699320)
+*   [Working with Data](https://go.microsoft.com/fwlink/?LinkId=398602)
+*   [Security](https://go.microsoft.com/fwlink/?LinkId=398603)
+*   [Client side development](https://go.microsoft.com/fwlink/?LinkID=699321)
+*   [Develop on different platforms](https://go.microsoft.com/fwlink/?LinkID=699322)
+*   [Read more on the documentation site](https://go.microsoft.com/fwlink/?LinkID=699323)
+
+## Run & Deploy
+
+*   [Run your app](https://go.microsoft.com/fwlink/?LinkID=517851)
+*   [Run tools such as EF migrations and more](https://go.microsoft.com/fwlink/?LinkID=517853)
+*   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
+
+We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)

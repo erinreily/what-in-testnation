@@ -1,7 +1,13 @@
 {
-  "name": "Node.js Sample",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-sample",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"]
+  "name": "ASP.NET Core Mvc Website",
+  "description": "ASP.NET Core mvc website using Asp.Net Core",
+  "website": "http://www.softtrends.com/",
+  "repository": "https://github.com/heroku-softtrends/dotnetmvc.sample",
+  "logo": "https://avatars2.githubusercontent.com/u/20908829?v=3&s=150",
+  "keywords": ["aspnet core", "aspnet core mvc"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku-softtrends/dotnetcore.main.git"
+    }
+  ]
 }
