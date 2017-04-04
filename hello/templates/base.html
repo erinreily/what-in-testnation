@@ -54,6 +54,23 @@
   </ul>
 </nav>
 
+ <button type="button">Go</button> 
+
+ <form>
+  Room Number: <input type="text" name="room_number"><br>
+  Tech Contained: <input type="text" name="tech_contained"><br>
+  Capacity: <input type="text" name="capacity"><br>
+  Is Available: <input type="text" name="is_available"><br>
+  Room Condition: <select name="room-condition">
+        <option value="good">Good</option>
+        <option value="fair">Fair</option>
+        <option value="poor">Poor</option>
+        <option value="needs repair">Needs Repair</option>
+    </select> 
+</form> 
+
+<div id="results"></div>
+
 {% block content %}{% endblock %}
 
 </body>
