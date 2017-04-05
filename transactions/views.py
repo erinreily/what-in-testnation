@@ -10,5 +10,5 @@ from django.http import HttpResponse
 
 
 def transactions_form(request):
-    #return HttpResponse("You have reached the Transactions page.")
-    return render(request, "transactions/transactions.html")
+    return HttpResponse("You have reached the Transactions page.")
+    #return render(request, "transactions/transactions.html")
