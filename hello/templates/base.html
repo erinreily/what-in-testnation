@@ -47,7 +47,7 @@
       <li><a href="">Search Books</a></li>
       <li><a href="">Search Programs</a></li>
       <li><a href="">Meet Our Staff</a></li>
-      <li class="librarian"><a href="">Transactions</a></li>
+      <li {% if request.resolver_match.url_name == "transactions" %} class="active"{% endif %}><a href={% url "transactions" %}>Transactions</a></li>
       <li><a href="">Donations</a></li>
       <li class="navbar-right"><a href="">Login/Create Account</a></li>
       <li class="navbar-right loggedin"><a href="">My Account</a></li>
