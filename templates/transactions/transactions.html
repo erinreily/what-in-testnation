@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block style %}
+<style>
+
+#tabs {
+    display:flex;
+}
+
+.tab {
+  height:40px;
+  width:15%;
+  text-decoration: none;
+  color: #4b4b4b;
+  text-align: center;
+  padding-top:15px;
+  font-family: Verdana, sans-serif;
+  display:inline;
+  background-color:#b0b0b0;
+border: 1px solid #a5a5a5;
+border-radius:10px 10px 0px 0px;
+}
+
+
+.tab:hover {
+  background-color: #a5a5a5;
+}
+
+#content {
+  width:90%;
+  border:1px solid #b0b0b0;
+  height:200px;
+}
+
+</style>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+    function changeContent(type) {
+        var content = document.getElementById("content");
+        var html = "";
+        if (type == 1) {
+            html = "<form>Member ID: <input type='text' name='mid'><br> Rentable ID: <input type='text' name='rid'><br> <input type='submit' value='Submit'> </form>";
+        }
+        else if (type == 2) {
+            html = '<form> Member ID: <input type="text" name="mid"><br> Member Last Name: <input type="text" name="lname"><br><input type="submit" value="Submit"> </form>';
+        }
+        else if (type == 3) {
+            html = ' <form>Title: <input type="text" name="title"><br>Publisher: <input type="text" name="publisher"><br>Genre: <select><option value="nonfiction">Non-Fiction</option><option value="fiction">Fiction</option> </select>ISBN: <input type="text" name="isbn"><br><input type="submit" value="Submit"></form>';
+        }
+        else if (type == 4) {
+            html = '<form>Title: <input type="text" name="title"><br> Date: <input type="date" name="date"><br>Staff Leader: <input type="text" name="leader"><br><input type="submit" value="Submit"></form>';
+        }
+        content.innerHTML = html;
+    }
+    
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    
+
+  <div id="tabs">
+      <div class="tab" id="check_out" onclick="changeContent(1)">Check Out</div>
+      <div class="tab" id="lookup_member" onclick="changeContent(2)">Lookup Member</div>
+      <div class="tab" id="three" onclick="changeContent(3)">Add Rentable</div>
+      <div class="tab" id="four" onclick="changeContent(4)">Add Event</div>
+  </div>
+
+  <div id="content">
+  </div>
+
+{% endblock %}
