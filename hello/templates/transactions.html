@@ -1,8 +1,9 @@
-<DOCTYPE html>
-  
-<head>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-<style type="text/css">
+{% block style %}
+
+<style>
 
 #tabs {
     display:flex;
@@ -21,8 +22,7 @@
 border: 1px solid #a5a5a5;
 border-radius:10px 10px 0px 0px;
 }
-
-
+  
 .tab:hover {
   background-color: #a5a5a5;
 }
@@ -33,8 +33,11 @@ border-radius:10px 10px 0px 0px;
   height:200px;
 }
 
+</style>
 
-  </style>
+{% endblock %}
+
+{% block script %}
 
 <script>
 
@@ -59,9 +62,9 @@ border-radius:10px 10px 0px 0px;
 
 </script>
 
-</head>
-    
-<body>
+{% endblock %}
+
+{% block content %}
 
   <div id="tabs">
       <div class="tab" id="check_out" onclick="changeContent(1)">Check Out</div>
@@ -71,14 +74,6 @@ border-radius:10px 10px 0px 0px;
   </div>
 
   <div id="content">
-        <form>
-            Title: <input type="text" name="title"><br>
-            Date: <input type="date" name="date"><br>
-            Staff Leader: <input type="text" name="leader"><br>
-            <input type="submit" value="Submit">
-        </form>
   </div>
 
-</body>
-  
-</html>
+{% endblock %}
