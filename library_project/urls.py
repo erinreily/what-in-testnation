@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^donations/', include('donations.urls', namespace='donations')),
-    url(r'^transactions/', include('transactions.urls', name='transactions')),
+    url(r'^transactions/', include('transactions.urls', namespace='transactions')),
     url(r'^admin/', include(admin.site.urls)),
 ]
