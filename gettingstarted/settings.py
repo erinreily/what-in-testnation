@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 import os
 import dj_database_url
-import sys
-import urlparse
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -78,37 +76,16 @@ WSGI_APPLICATION = 'gettingstarted.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# Register database schemes in URLs.
-urlparse.uses_netloc.append('mysql')
-
-try:
-
-    # Check to make sure DATABASES is set in settings.py file.
-    # If not default to {}
-
-    if 'DATABASES' not in locals():
-        DATABASES = {}
-
-    if 'DATABASE_URL' in os.environ:
-        url = urlparse.urlparse(os.environ['DATABASE_URL'])
-
-        # Ensure default database exists.
-        DATABASES['default'] = DATABASES.get('default', {})
-
-        # Update with environment configuration.
-        DATABASES['default'].update({
-            'NAME': url.path[1:],
-            'USER': url.username,
-            'PASSWORD': url.password,
-            'HOST': url.hostname,
-            'PORT': url.port,
-        })
-
-
-        if url.scheme == 'mysql':
-            DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
-except Exception:
-    print 'Unexpected error:', sys.exc_info()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '/heroku_97cce3e710dd02c',
+        'USER': 'b420157cdb1d30',
+        'PASSWORD': '2d3c1202',
+        'HOST': 'us-cdbr-iron-east-03.cleardb.net',
+      # 'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
