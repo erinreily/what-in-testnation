@@ -8,5 +8,5 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def index(request):
+def transactions_form(request):
     return HttpResponse("You have reached the Transactions page.")
