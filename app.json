@@ -1,6 +1,6 @@
 {
-  "name": "Team 6 Public Library",
-  "description": "A barebones Python app, which can easily be deployed to Heroku.",
+  "name": "Team 6 Project for COSC 3360 which a a Library Website",
+  "description": "Description here",
   "image": "heroku/python",
   "repository": "https://github.com/heroku/python-getting-started",
   "keywords": ["python", "django" ],
