@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+        h4{
+            padding: 15px;
+        }
+        ul.errorlist{
+            background-color: white;
+            color:red;
+        }
+        .login-label{
+            display: inline-block;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <div class="row">
+            {% if not user.is_authenticated %}
+                <h4>Login</h4>
+                <form method="post" class="col s12">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="submit" class="waves-effect waves-light btn" value="Login">
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+            <h2>{{ user.is_authenticated }}</h2>
+            <h3>Errors: {{ errors }}</h3>
+        </div>
+    </div>
+
+{% endblock %}

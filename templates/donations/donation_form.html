@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block style %}
+<<<<<<< HEAD
+    <style type="text/css">
+        .col img {
+            margin-left: 35px;
+        }
+
+        .container#donated {
+          text-align: center;
+        }
+
+        .container#donated > img {
+          margin-top: 100px;
+          vertical-align: middle;
+        }
+
+        button {
+            margin-left: 14px;
+        }
+
+        /* label color */
+        .input-field label {
+         color: #b39ddb;
+        }
+        /* label focus color */
+        .input-field input[type=text]:focus + label,
+        .input-field input[type=number]:focus + label,
+        .input-field textarea#message:focus + label {
+         color: #b39ddb;
+        }
+        /* label underline focus color */
+        .input-field input[type=text]:focus,
+        .input-field input[type=number]:focus,
+        .input-field textarea#message:focus {
+         border-bottom: 1px solid #b39ddb;
+         box-shadow: 0 1px 0 0 #b39ddb;
+        }
+        /* valid color */
+        .input-field input[type=text].valid,
+        .input-field input[type=number].valid {
+         border-bottom: 1px solid #b39ddb;
+         box-shadow: 0 1px 0 0 #b39ddb;
+        }
+        /* invalid color */
+        .input-field input[type=text].invalid,
+        .input-field input[type=number].invalid {
+         border-bottom: 1px solid #d50000;
+         box-shadow: 0 1px 0 0 #d50000;
+        }
+        /* icon prefix focus color */
+        .input-field .prefix.active {
+         color: #b39ddb;
+=======
+    <style>
+        h1, p {
+          padding: 10px 0px 15px 20px;
+        }
+
+        p {
+          max-width: 400px;
+          font: 14px Verdana, sans-serif;
+        }
+
+        .donate-form {
+          max-width: 500px;
+          padding: 20px 12px 10px 20px;
+          font: 13px Arial, Helvetica, sans-serif;
+        }
+
+        .donate-form-heading {
+          font-weight: bold;
+          font-style: italic;
+          border-bottom: 2px solid #ddd;
+          margin-bottom: 20px;
+          font-size: 15px;
+          padding-bottom: 3px;
+        }
+
+        .donate-form label {
+            display: block;
+            margin: 10px 0px 10px 0px;
+
+        }
+
+        .donate-form label span .required{
+            color: red;
+        }
+
+        .donate-form label > span {
+          width: 100px;
+          font-weight: bold;
+          float: left;
+          padding-top: 8px;
+          padding-right: 5px;
+        }
+
+        .donate-form span.required {
+          color: red;
+        }
+
+        .donate-form input.input-field {
+          width: 48%;
+        }
+
+        .donate-form input.input-field,
+        .donate-form .textarea-field,
+        .donate-form .select-field {
+          box-sizing: border-box;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          border: 1px solid #C2C2C2;
+          box-shadow: 1px 1px 4px #EBEBEB;
+          -moz-box-shadow: 1px 1px 4px #EBEBEB;
+          -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+          border-radius: 3px;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          padding: 7px;
+          outline: none;
+        }
+
+        .donate-form .input-field:focus,
+        .donate-form .textarea-field:focus,
+        .donate-form.select-field:focus {
+          border: 1px solid #0C0;
+        }
+
+        .donate-form .textarea-field {
+          height: 100px;
+          width: 48%;
+          resize: none;
+        }
+
+        .donate-form input[type=submit],
+        .donate-form input[type=button] {
+          border: none;
+          padding: 8px 15px 8px 15px;
+            margin-top: 10px;
+          background: #84ccff;
+          color: #fff;
+          box-shadow: 1px 1px 4px #DADADA;
+          -moz-box-shadow: 1px 1px 4px #DADADA;
+          -webkit-box-shadow: 1px 1px 4px #DADADA;
+          border-radius: 3px;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+        }
+
+        .donate-form input[type=submit]:hover,
+        .donate-form input[type=button]:hover {
+          background: #71b3e2;
+          color: #fff;
+>>>>>>> 1506909a0a168091856c108e091a09dbc075cc7b
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% if not donated %}
+<<<<<<< HEAD
+        <div class="container">
+        <h1 align="center">Donations</h1>
+        <h5 align="center">Every donation helps the library get more books, host more events, and keep the library maintained.</h5><br>
+        <div class="row">
+            <form method="POST" class="col s12" action={% url "donations:donations_form" %} >
+                {% csrf_token %}
+                <div class="name_row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input class="validate" id="first_name" type="text" name="first_name">
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input class="validate" id="last_name" type="text" name="last_name">
+                        <label for="last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="amount_row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">shopping_cart</i>
+                        <input class="validate" id="amount" type="number" step="any" min="1" max="999999999" name="amount" required="required">
+                        <label for="amount">Amount</label>
+                    </div>
+                </div>
+                <div class="card_row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">credit_card</i>
+                        <input class="validate" id="card_number" type="text" pattern="\d*" name="card_number" minlength="16" maxlength="16" required="required">
+                        <label for="card_number">Credit Card Number</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input class="validate" id="cvv" type="text" pattern="\d*" name="cvv" minlength="3" maxlength="4" required="required">
+                        <label for="cvv">CVV</label>
+                    </div>
+                    <div class="col s12">
+                        <img class="responsive-img" src='/static/credit_cards.png'/>
+                    </div>
+                </div>
+                <div class="message_box">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <textarea class="materialize-textarea" id="message" name="message"></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                </div>
+                <button class="waves-effect deep-purple lighten-3 waves-light btn" type="submit" name="action">Donate
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    {% else %}
+        <div class="container" id="donated">
+            <h1 align="center">Thank You for the donation!</h1>
+            <img class="responsive-img" src="/static/turtle.png">
+        </div>
+    {% endif %}
+        </div>
+=======
+        <h1>Donations</h1>
+        <p>Every donation helps the library get more books, host more events, and keep the library maintained.</p>
+        <div class="donate-form">
+            <div class="donate-form-heading">Provide your information</div>
+            <form method="POST" action="/donations/">
+                {% csrf_token %}
+                <div class="field">
+                    {{ form.name.errors }}
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                    <span class="helpertext">{{ form.name.help_text }}</span>
+                </div>
+                <div class="field">
+                    {{ form.amount.errors }}
+                    {{ form.amount.label_tag }}
+                    {{ form.amount }}
+                    <span class="helpertext">{{ form.amount.help_text }}</span>
+                </div>
+                <div class="field">
+                    {{ form.card_number.errors }}
+                    {{ form.card_number.label_tag }}
+                    {{ form.card_number }}
+                    <span class="helpertext">{{ form.card_number.help_text }}</span>
+                </div>
+                <div class="field">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <input class="submitButton" type="submit" value="Make Donation"/>
+            </form>
+        </div>
+    {% else %}
+        <h1>Thanks for the donation!</h1>
+    {% endif %}
+>>>>>>> 1506909a0a168091856c108e091a09dbc075cc7b
+{% endblock %}

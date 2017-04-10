@@ -1,0 +1,14 @@
+```
+This file is used if you want to override the settings.py config locally.
+To activate, rename this file as local_settings.py instead of local_settings.py.dist
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'librarydb',
+        'USER': 'root',
+        'PASSWORD': 'dont4get',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}

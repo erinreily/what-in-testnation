@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+<<<<<<< HEAD
+        h4{
+            padding: 15px;
+        }
+        ul.errorlist{
+            background-color: white;
+            color:red;
+        }
+        .login-label{
+            display: inline-block;
+        }
+=======
+        body{
+            background-image: url("http://wallpapercave.com/wp/7ApilLw.jpg");
+        }
+        body{
+            background-color: white;
+            height: 100%;
+            paddign: 15px;
+            position: relative;
+        }
+        .login{
+            padding: 20px;
+            background-color: rgba(255,255,255,0.7);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        button[type='submit']{
+            background: #B0E0E6;
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+>>>>>>> 1506909a0a168091856c108e091a09dbc075cc7b
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+<<<<<<< HEAD
+        <div class="row">
+            {% if not user.is_authenticated %}
+                <h4>Login</h4>
+                <form method="post" class="col s12">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <span class="login-label">
+                                {{ form.username.label }}
+                                {{ form.username.errors }}
+                            </span>
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form.password.erros }}
+                            {{ form.password.label }}
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="submit" class="waves-effect waves-light btn" value="Login">
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+            <h2>{{ user.is_authenticated }}</h2>
+        </div>
+=======
+      <form method="post">
+      <h2>Login</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+      </form>
+>>>>>>> 1506909a0a168091856c108e091a09dbc075cc7b
+    </div>
+
+{% endblock %}

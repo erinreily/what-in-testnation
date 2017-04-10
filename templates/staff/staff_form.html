@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block style %}
+    <style>
+        h4{
+            padding:15px;
+        }
+        .staff-form{
+            padding: 20px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="staff-form">
+        <div class="row">
+            {% if not user.is_authenticated %}
+{#                If the user has not created a member account#}
+                <h4>Create Member Account</h4>
+            {% else %}
+{#                If the user has created a member account#}
+                <h4>Edit Account</h4>
+            {% endif %}
+            <form method="post" class="col s12">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="input-field col s4">
+                            {{ user_form.username.label }}
+                            {{ user_form.username.errors }}
+                            {{ user_form.username }}
+                    </div>
+                    <div class="input-field col s4">
+                            {{ user_form.first_name.label }}
+                            {{ user_form.first_name.errors }}
+                            {{ user_form.first_name }}
+                    </div>
+                    <div class="input-field col s4">
+                            {{ user_form.last_name.label }}
+                            {{ user_form.last_name.errors }}
+                            {{ user_form.last_name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                            {{ user_form.email.label }}
+                            {{ user_form.email.errors }}
+                            {{ user_form.email }}
+                    </div>
+                    <div class="input-field col s4">
+                            {{ staff_form.wage.label }}
+                            {{ staff_form.wage.errors }}
+                            {{ staff_form.wage }}
+                    </div>
+                    <div class="input-field col s4">
+                        {{ staff_form.title.label }}
+                        {{ staff_form.title.errors }}
+                        {{ staff_form.title }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        {{ staff_form.supervisor.label }}
+                        {{ staff_form.supervisor.errors }}
+                        {{ staff_form.supervisor }}
+                    </div>
+                    <div class="input-field col s4">
+                        {{ user_form.password.label }}
+                        {{ user_form.password.errors }}
+                        {{ user_form.password }}
+                    </div>
+                </div>
+                <input class="waves-effect waves-light btn" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#id_supervisor').material_select();
+        });
+    </script>
+{% endblock %}

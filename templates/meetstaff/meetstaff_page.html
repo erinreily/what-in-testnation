@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<head>
+<link rel="stylesheet" href="materialize.min.css">
+{% block style %}
+<style>
+</style>
+{% endblock %}
+</head>
+
+{% block content %}
+<body>
+<div>
+<h1>Meet Our Staff</h1>
+
+<h3>Staff Directory</h3>
+
+<table class="striped bordered">
+<thead>
+<tr>
+<th>Name</th>
+<th>Title</th>
+<th>Email</th>
+</tr>
+</thead>
+<tbody>
+{% for item in staff_list %}
+<tr>
+<td>{{ item.user.first_name }} {{ item.user.last_name }}</td>
+<td>{{ item.title }}</td>
+<td>{{ item.user }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</body>
+{% endblock %}
